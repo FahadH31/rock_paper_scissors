@@ -7,27 +7,38 @@
 <body>
     <p>Make your choice!</p>
 
+    <!--Buttons-->
     <button onclick="
-     playGame('rock');
+         playGame('rock');
+         printScore();
     ">Rock</button>
 
     <button onclick="
-     playGame('paper');
+        playGame('paper');
+         printScore();
     ">Paper</button>
 
     <button onclick="
-     playGame('scissors');
+        playGame('scissors');
+        printScore();
     ">Scissors</button>
 
     <button onclick="
         score.wins = 0;
         score.losses = 0;
         score.ties = 0;
+        printScore();
         localStorage.removeItem('score')
     ">Reset Score</button>
+
+
+    <!--Text-->
+    <p class = 'js-result-text'></p>
+    <p class = 'js-score-text'></p>
     
+
+    <!--JavaScript-->
     <script>
-        
         const score = JSON.parse(localStorage.getItem('score')) || 
         {
             wins: 0,
@@ -78,8 +89,16 @@
             else if(result === 'Tie.'){
                 score.ties++;
             }
+        
+            //Local storage can only save strings.
+            localStorage.setItem('score', JSON.stringify(score));
 
-            function pickComputerMove(){
+            
+            document.querySelector('.js-result-text').innerText = 
+            `You picked ${userMove}. The computer picked ${computerMove}. ${result} \n`;
+        }
+        
+        function pickComputerMove(){
             const randomNumber = Math.random();
 
             if(randomNumber>=0 && randomNumber<1/3){
@@ -93,11 +112,9 @@
             }
         }
 
-            //Local storage can only save strings.
-            localStorage.setItem('score', JSON.stringify(score));
-
-            alert(`The computer picked ${computerMove}, you picked ${userMove}. ${result} 
-            \nWins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
-    }
+        function printScore(){
+           document.querySelector('.js-score-text').innerText = 
+           `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+        }
     </script>
 </body>
