@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Rock, Paper, Scissors Game</title>
+    <link rel='stylesheet' href='rock-paper-scissors-stylesheet.css'>
+    <script src='rock-paper-scissors-script.js'></script>
+</head>
+
+<body>
+    <!--Choice Buttons-->
+    <button onclick=" 
+        playGame('rock'); 
+        printScore();
+    " class=choice-button><img src="rock.png">
+    </button>
+
+    <button onclick="
+        playGame('paper');
+        printScore();
+    " class=choice-button><img src="paper.png"></button>
+
+    <button onclick="
+        playGame('scissors');
+        printScore();
+    " class=choice-button><img src="scissors.png"></button>
+
+    <!--Text-->
+    <p class='js-result-text green red yellow'></p>
+    <p class='js-choices-text'></p>
+    <p class='js-score-text'></p>
+
+    <!--Reset Button-->
+    <button onclick="
+        resetButtonClick();
+    " class='reset-button'>Reset Score</button>
+</body>

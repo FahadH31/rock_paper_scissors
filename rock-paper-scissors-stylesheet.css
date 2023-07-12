@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+body {
+    background-color: black;
+    text-align: center;
+    margin-top: 15vh;
+    color: grey;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15pt;
+}
+
+.choice-button {
+    border-radius: 50%;
+    background-color: black;
+    border: 0px;
+    height: 17.5vh;
+    width: 9vw;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+}
+
+img {
+    width: 50%;
+    height: 50%;
+    transition: 0.1s;
+}
+
+img:hover {
+    transform: scale(1.1);
+    transition: 0.1s;
+    opacity: 0.5;
+}
+
+.reset-button {
+    opacity: 0%;
+}
+
+.js-result-text {
+    font-weight: bold;
+}
+
+/*Color Classes for result*/
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.yellow {
+    color: gold;
+}
+
+.show {
+    opacity: 100%;
+}
+
+.hide {
+    opacity: 0%;
+}
