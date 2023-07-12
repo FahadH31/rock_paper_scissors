@@ -90,7 +90,7 @@ function printScore() {
     document.querySelector('.js-score-text').innerText =
         `Wins: ${score.wins} | Losses: ${score.losses} | Ties: ${score.ties}`;
 
-    document.querySelector('.reset-button').classList.add('show');
+    document.querySelector('.reset-button').classList.remove('hide');
 }
 
 function resetButtonClick() {

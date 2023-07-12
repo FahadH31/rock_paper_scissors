@@ -9,14 +9,8 @@ body {
     font-size: 15pt;
 }
 
-.choice-button {
-    border-radius: 50%;
-    background-color: black;
-    border: 0px;
-    height: 17.5vh;
-    width: 9vw;
-    margin-left: 1.5vw;
-    margin-right: 1.5vw;
+p{
+    transition: 0.2s;
 }
 
 img {
@@ -28,12 +22,45 @@ img {
 img:hover {
     transform: scale(1.1);
     transition: 0.1s;
-    opacity: 0.5;
+    opacity: 50%;
+}
+
+.choice-button {
+    border-radius: 50%;
+    background-color:#343434;
+    border: 0px;
+    height: 17.5vh;
+    width: 9vw;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
 }
 
 .reset-button {
-    opacity: 0%;
+    border: 0px;
+    border-radius: 25px;
+    opacity: 100%;
+    transition: 0.4s;
+
+    background-color: white;
+    color: #343434;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13pt;
+    font-weight: bold;
+
+    cursor: pointer;
 }
+
+.reset-button:hover{
+    opacity: 50%;
+    transition: 0.2s;
+}
+
 
 .js-result-text {
     font-weight: bold;
@@ -50,10 +77,6 @@ img:hover {
 
 .yellow {
     color: gold;
-}
-
-.show {
-    opacity: 100%;
 }
 
 .hide {
