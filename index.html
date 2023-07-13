@@ -12,18 +12,23 @@
     <button onclick=" 
         playGame('rock'); 
         printScore();
-    " class=choice-button><img src="rock.png">
+    " class=choice-button><img class = 'choice-img' src="rock.png">
     </button>
 
     <button onclick="
         playGame('paper');
         printScore();
-    " class=choice-button><img src="paper.png"></button>
+    " class=choice-button><img class = 'choice-img' src="paper.png"></button>
 
     <button onclick="
         playGame('scissors');
         printScore();
-    " class=choice-button><img src="scissors.png"></button>
+    " class=choice-button><img class = 'choice-img' src="scissors.png"></button>
+
+    <br>
+
+    <button class='choice-button computer-move-button'><img class = "computer-move-img" src = "transparent.png"></button>
+    <p class = 'computer-move-caption'>Computer's Move</p>
 
     <!--Text-->
     <p class='js-result-text green red yellow'></p>

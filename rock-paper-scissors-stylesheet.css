@@ -3,7 +3,6 @@
 body {
     background-color: black;
     text-align: center;
-    margin-top: 15vh;
     color: grey;
     font-family: 'Open Sans', sans-serif;
     font-size: 15pt;
@@ -13,13 +12,14 @@ p{
     transition: 0.2s;
 }
 
-img {
+.choice-img {
     width: 50%;
     height: 50%;
     transition: 0.1s;
+    cursor: pointer;
 }
 
-img:hover {
+.choice-img:hover {
     transform: scale(1.1);
     transition: 0.1s;
     opacity: 50%;
@@ -33,6 +33,25 @@ img:hover {
     width: 9vw;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
+    margin-top: 10vh;
+}
+
+.computer-move-button{
+    background-color:azure;
+    margin-top: 10vh;
+    transition: 0.2s;
+    height: 19.5vh;
+    width: 10vw;
+}
+
+.computer-move-caption{
+    margin-bottom: 5vh;
+    color: azure;
+}
+
+.computer-move-img{
+    width:60%;
+    height:auto;
 }
 
 .reset-button {
