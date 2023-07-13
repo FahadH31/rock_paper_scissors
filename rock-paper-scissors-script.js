@@ -65,7 +65,9 @@ function playGame(userMove) {
 function pickComputerMove() {
     const randomNumber = Math.random();
 
-    const computerMove = document.querySelector('.computer-move-button')
+    const computerMove = document.querySelector('.computer-move-button');
+    computerMove.classList.remove('hide');
+    document.querySelector('.computer-move-caption').classList.remove('hide');
     
     //Show the image and caption for the computer move once this function runs.
     computerMove.classList.remove('hide');
@@ -109,7 +111,8 @@ function resetButtonClick() {
     localStorage.removeItem('score')
 
     //Hide the previous results 
-    document.querySelector('.computer-move-button').innerHTML = '<img class = "computer-move-img" src = "transparent.png">'; //This gets rid of only the image inside the button
+    document.querySelector('.computer-move-button').classList.add('hide');
+    document.querySelector('.computer-move-caption').classList.add('hide');
     document.querySelector('.js-result-text').classList.add('hide');
     document.querySelector('.js-choices-text').classList.add('hide');
 }
