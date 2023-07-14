@@ -8,35 +8,45 @@
 </head>
 
 <body>
+    <p class = 'prompt-text'>Make your choice</p>
+
     <!--Choice Buttons-->
     <button onclick=" 
         playGame('rock'); 
-        printScore();
     " class=choice-button><img class = 'choice-img' src="rock.png">
     </button>
 
     <button onclick="
         playGame('paper');
-        printScore();
     " class=choice-button><img class = 'choice-img' src="paper.png"></button>
 
     <button onclick="
         playGame('scissors');
-        printScore();
     " class=choice-button><img class = 'choice-img' src="scissors.png"></button>
 
     <br>
 
-    <button class='choice-button computer-move-button hide'><img class = "computer-move-img" src = "transparent.png"></button>
-    <p class = 'computer-move-caption hide'>Computer's Move</p>
+    <!--User Move Display-->
+    <button class='move-button hide' id = 'user-move-button'>
+        <img class = "move-img" id = 'user-move-img' src = "transparent.png">
+    </button>
+
+    <!--Computer Move Display-->
+    <button class='move-button hide' id = 'computer-move-button'>
+        <img class = "move-img" id = 'computer-move-img' src = "transparent.png">
+    </button>
+    <br>
+
+    <!--Captions-->
+    <p class = 'move-caption hide' id = 'user-move-caption'>Your Move</p>
+    <p class = 'move-caption hide' id = 'computer-move-caption'>Computer's Move</p>
 
     <!--Text-->
     <p class='js-result-text green red yellow'></p>
-    <p class='js-choices-text'></p>
     <p class='js-score-text'></p>
 
     <!--Reset Button-->
     <button onclick="
-        resetButtonClick();
+        clickResetButton();
     " class='reset-button hide'>Reset Score</button>
 </body>

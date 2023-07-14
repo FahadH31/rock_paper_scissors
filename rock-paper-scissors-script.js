@@ -1,3 +1,4 @@
+//Gets score from local storage, or create default.
 const score = JSON.parse(localStorage.getItem('score')) ||
 {
     wins: 0,
@@ -5,19 +6,53 @@ const score = JSON.parse(localStorage.getItem('score')) ||
     ties: 0
 };
 
+
+
+//Picks the move for the computer.
+function doComputerMove() {
+    const randomNumber = Math.random();
+    const computerMoveDisplay = document.querySelector('#computer-move-button');
+    
+    //Show the image and caption for the computer move.
+    computerMoveDisplay.classList.remove('hide');
+    document.querySelector('#computer-move-caption').classList.remove('hide');
+
+    //Decides which move is chosen.
+    if (randomNumber >= 0 && randomNumber < 1 / 3) {
+        computerMoveDisplay.innerHTML = '<img class = "move-img" src = "rock.png">'; 
+        return 'rock';
+    }
+    else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+        computerMoveDisplay.innerHTML = '<img class = "move-img" src = "paper.png">'; 
+        return 'paper';
+    }
+    else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+        computerMoveDisplay.innerHTML = '<img class = "move-img" src = "scissors.png">'; 
+        return 'scissors';
+    }
+}
+
+
+
 function playGame(userMove) {
     let result = '';
-    let computerMove = pickComputerMove();
+    let computerMove = doComputerMove();
+    const userMoveDisplay = document.querySelector('#user-move-button');
 
-    //Conditions for determining result.
-    if (userMove === 'scissors') {
+    //Show the button and caption for the user move.
+    userMoveDisplay.classList.remove('hide');
+    document.querySelector('#user-move-caption').classList.remove('hide');
+
+    //Conditions for determining result (and displaying user move).
+    if (userMove === 'rock') {
         if (computerMove === 'rock') {
-            result = 'lost.';
-        } else if (computerMove === 'paper') {
-            result = 'won.';
-        } else if (computerMove === 'scissors') {
             result = 'tied.';
+        } else if (computerMove === 'paper') {
+            result = 'lost.';
+        } else if (computerMove === 'scissors') {
+            result = 'won.';
         }
+        userMoveDisplay.innerHTML = '<img class = "move-img" src = "rock.png">'; 
     }
     else if (userMove === 'paper') {
         if (computerMove === 'rock') {
@@ -27,18 +62,21 @@ function playGame(userMove) {
         } else if (computerMove === 'scissors') {
             result = 'lost.';
         }
+        userMoveDisplay.innerHTML = '<img class = "move-img" src = "paper.png">'; 
     }
-    else if (userMove === 'rock') {
+    else if (userMove === 'scissors') {
         if (computerMove === 'rock') {
-            result = 'tied.';
-        } else if (computerMove === 'paper') {
             result = 'lost.';
-        } else if (computerMove === 'scissors') {
+        } else if (computerMove === 'paper') {
             result = 'won.';
+        } else if (computerMove === 'scissors') {
+            result = 'tied.';
         }
+        userMoveDisplay.innerHTML = '<img class = "move-img" src = "scissors.png">'; 
     }
+    
 
-    //Calculating and saving the correct score based on the result.
+    //Calculating, saving, and printing the correct score based on the result.
     if (result === 'won.') {
         score.wins++;
     }
@@ -50,42 +88,18 @@ function playGame(userMove) {
     }
     //(local storage can only save strings).
     localStorage.setItem('score', JSON.stringify(score));
+    printScore();
 
     //Display result (with correct color) and choices made.
     document.querySelector('.js-result-text').classList.remove('hide');
     document.querySelector('.js-result-text').innerText = `\nYou ${result}`;
     selectResultColor(result);
 
-    document.querySelector('.js-choices-text').classList.remove('hide');
-    document.querySelector('.js-choices-text').innerText =
-        `You picked ${userMove}. The computer picked ${computerMove}.`;
+    //Change prompt text.
+    document.querySelector('.prompt-text').innerText = "Make another choice to keep playing!"
 }
 
-//Picks the move for the computer.
-function pickComputerMove() {
-    const randomNumber = Math.random();
 
-    const computerMove = document.querySelector('.computer-move-button');
-    computerMove.classList.remove('hide');
-    document.querySelector('.computer-move-caption').classList.remove('hide');
-    
-    //Show the image and caption for the computer move once this function runs.
-    computerMove.classList.remove('hide');
-    document.querySelector('.computer-move-caption').classList.remove('hide');
-
-    if (randomNumber >= 0 && randomNumber < 1 / 3) {
-        computerMove.innerHTML = '<img class = "computer-move-img" src = "rock.png">'; 
-        return 'rock';
-    }
-    else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
-        computerMove.innerHTML = '<img class = "computer-move-img" src = "paper.png">'; 
-        return 'paper';
-    }
-    else if (randomNumber >= 2 / 3 && randomNumber < 1) {
-        computerMove.innerHTML = '<img class = "computer-move-img" src = "scissors.png">'; 
-        return 'scissors';
-    }
-}
 
 //Chooses the correct color for displaying the result.
 function selectResultColor(result) {
@@ -96,6 +110,8 @@ function selectResultColor(result) {
     resultText.classList.toggle('yellow', result === 'tied.')
 }
 
+
+
 //Prints the score.
 function printScore() {
     document.querySelector('.js-score-text').innerText =
@@ -104,15 +120,21 @@ function printScore() {
     document.querySelector('.reset-button').classList.remove('hide');
 }
 
-function resetButtonClick() {
+
+
+function clickResetButton() {
     //Reset score and update immediately
     score.wins = score.losses = score.ties = 0;
     printScore();
+
     localStorage.removeItem('score')
 
     //Hide the previous results 
-    document.querySelector('.computer-move-button').classList.add('hide');
-    document.querySelector('.computer-move-caption').classList.add('hide');
+    document.querySelector('.prompt-text').innerText = 'Make your choice'
+    document.querySelector('#user-move-button').classList.add('hide');
+    document.querySelector('#user-move-caption').classList.add('hide');
+    document.querySelector('#computer-move-button').classList.add('hide');
+    document.querySelector('#computer-move-caption').classList.add('hide');
     document.querySelector('.js-result-text').classList.add('hide');
     document.querySelector('.js-choices-text').classList.add('hide');
 }

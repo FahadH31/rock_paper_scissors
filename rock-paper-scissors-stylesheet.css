@@ -2,54 +2,84 @@
 
 body {
     background-color: black;
-    text-align: center;
     color: grey;
+
+    text-align: center;
     font-family: 'Open Sans', sans-serif;
     font-size: 15pt;
 }
 
-p{
+.prompt-text{
+    color: azure;
+    opacity: 75%;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11pt;
+    font-style: italic;
+    
     transition: 0.2s;
 }
 
 .choice-img {
     width: 50%;
     height: 50%;
+
     transition: 0.1s;
+
     cursor: pointer;
 }
 
 .choice-img:hover {
-    transform: scale(1.1);
-    transition: 0.1s;
     opacity: 50%;
+    
+    transform: scale(1.1);
+    
+    transition: 0.1s;
 }
 
 .choice-button {
-    border-radius: 50%;
-    background-color:#343434;
     border: 0px;
-    height: 17.5vh;
-    width: 9vw;
-    margin-left: 1.5vw;
-    margin-right: 1.5vw;
-    margin-top: 10vh;
+    border-radius: 87.5px;
+
+    background-color:#343434;
+    
+    height: 175px;
+    width: 180px;
+
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
-.computer-move-button{
+.move-button{
+    border: 0px;
+    border-radius: 87.5px;
+    
     background-color:azure;
-    margin-top: 10vh;
     transition: 0.2s;
-    height: 19.5vh;
-    width: 10vw;
+
+    height: 215px;
+    width: 215px;
+
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 80px;
 }
 
-.computer-move-caption{
-    margin-bottom: 5vh;
+.move-caption{
     color: azure;
+
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 100px;
+    display: inline-block;
 }
 
-.computer-move-img{
+#user-move-caption{
+    margin-left: 50px;
+}
+
+.move-img{
     width:60%;
     height:auto;
 }
@@ -57,11 +87,10 @@ p{
 .reset-button {
     border: 0px;
     border-radius: 25px;
-    opacity: 100%;
-    transition: 0.4s;
 
     background-color: white;
     color: #343434;
+    opacity: 100%;
 
     padding-top: 10px;
     padding-bottom: 10px;
@@ -71,6 +100,8 @@ p{
     font-family: 'Open Sans', sans-serif;
     font-size: 13pt;
     font-weight: bold;
+
+    transition: 0.4s;
 
     cursor: pointer;
 }
@@ -85,6 +116,7 @@ p{
     font-weight: bold;
 }
 
+
 /*Color Classes for result*/
 .green {
     color: green;
@@ -98,6 +130,13 @@ p{
     color: gold;
 }
 
+
 .hide {
+    opacity: 0%;
+    cursor:default;
+    pointer-events: none;
+}
+
+.hide:hover{
     opacity: 0%;
 }
